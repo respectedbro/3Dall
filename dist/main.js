@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("первый"),console.log("второй")})();
