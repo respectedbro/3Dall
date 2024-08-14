@@ -2,5 +2,5 @@ import timer from './modules/timer'
 
 
 
-timer('15 august 2024')
+timer('21 august 2024')
 

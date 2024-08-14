@@ -3,7 +3,7 @@ const timer = (deadline) => {
     const timeMinutes = document.getElementById('timer-minutes')
     const timeSeconds = document.getElementById('timer-seconds')
 
-    let timerInterval
+    let idInterval
 
     const addTimeZero = (time) => {
         if(time < 10) {
@@ -31,15 +31,18 @@ const timer = (deadline) => {
         timeMinutes.textContent = addTimeZero(getTime.minutes)
         timeSeconds.textContent = addTimeZero(getTime.seconds)
 
-        if(getTime.timeRemaining <= 0) {
-            clearInterval(timerInterval)
+        if(getTime.timeRemaining < 0) {
+            timeHours.textContent = '00'
+            timeMinutes.textContent = '00'
+            timeSeconds.textContent = '00'
+            clearInterval(idInterval)
         }
         
     }
 
     updateClock()
 
-    timerInterval = setInterval(updateClock, 1000)
+    idInterval = setInterval(updateClock, 1000)
 }
 
 export default timer
