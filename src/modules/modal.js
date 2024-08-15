@@ -2,18 +2,34 @@ const modal = () => {
   const modal = document.querySelector('.popup')
   const buttons = document.querySelectorAll('.popup-btn')
   const closeBtn = modal.querySelector('.popup-close')
-  const popupMenu = document.querySelector('popup-content')
+ 
+  modal.style.opacity = 0
+  modal.style.visibility = 'hidden'
+  modal.style.transition = '0.5s'
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      modal.style.display = 'block'
-    })
-  })
+  const openModal = () => {
+    modal.style.display = 'block'
 
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none'
-  })
-  
+    setTimeout(() => {
+      modal.style.visibility = 'visible'
+      modal.style.opacity = 1
+      modal.transition = '0.5s'
+    }, 100);
+  }
+
+  const closeModal = () => {
+    modal.style.opacity = 0
+
+    setTimeout(() => {
+      modal.style.visibility = 'hidden'
+      modal.style.display = 'none'
+    }, 500)
+  }
+
+  buttons.forEach(btn => btn.addEventListener('click', openModal))
+
+  closeBtn.addEventListener('click', closeModal)
+
 
 }
 
