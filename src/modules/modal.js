@@ -42,7 +42,6 @@ const modal = () => {
 
   closeBtn.addEventListener('click', closeModal)
 
-
 }
 
 export default modal
