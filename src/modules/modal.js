@@ -1,47 +1,57 @@
 const modal = () => {
-  const modal = document.querySelector('.popup')
-  const buttons = document.querySelectorAll('.popup-btn')
-  const closeBtn = modal.querySelector('.popup-close')
-  const screenWidth = document.documentElement.offsetWidth
+    const modal = document.querySelector('.popup')
+    const buttons = document.querySelectorAll('.popup-btn')
+    const closeBtn = modal.querySelector('.popup-close')
+    const screenWidth = document.documentElement.offsetWidth
 
-  modal.style.opacity = 0
-  modal.style.visibility = 'hidden'
-  modal.style.transition = '0.5s'
-
-  const openModal = () => {
-    if (screenWidth < 768) {
-      modal.style.display = 'block'
-      modal.style.visibility = 'visible'
-      modal.style.opacity = 1
-      modal.transition = '0.5s'
-    } else {
-      modal.style.display = 'block'
-
-      setTimeout(() => {
-        modal.style.visibility = 'visible'
-        modal.style.opacity = 1
-        modal.transition = '0.5s'
-      }, 100);
-    }
-  }
-
-  const closeModal = () => {
-    if (screenWidth < 768) {
-      modal.style.display = 'none'
-      modal.style.opacity = 0
-    }
     modal.style.opacity = 0
+    modal.style.visibility = 'hidden'
 
-    setTimeout(() => {
-      modal.style.visibility = 'hidden'
-      modal.style.display = 'none'
-    }, 500)
-  }
+    const animateOnModal = () => {
+        let opacity = 0
+        const animateOn = () => {
+            opacity += 0.04
+            modal.style.opacity = opacity;
+            if (opacity < 1) {
+                requestAnimationFrame(animateOn)
+            }
+        }
+        modal.style.display = 'block'
+        modal.style.visibility = 'visible'
+        animateOn()
+    }
 
-  buttons.forEach(btn => btn.addEventListener('click', openModal))
+    const openModal = () => {
+        if (screenWidth < 768) {
+            modal.style.display = 'block'
+            modal.style.visibility = 'visible'
+            modal.style.opacity = 1
+        } else {
+            animateOnModal()
+        }
+    }
 
-  closeBtn.addEventListener('click', closeModal)
+    const animateOutModal = () => {
+        let opacity = 1
+        const animateOut = () => {
+            opacity -= 0.04
+            modal.style.opacity = opacity;
+            if (opacity > 0) {
+                requestAnimationFrame(animateOut)
+            } else {
+                modal.style.visibility = 'hidden'
+                modal.style.display = 'none'
+            }
+        }
+        animateOut()
+    }
 
+    const closeModal = () => {
+        animateOutModal()
+    }
+
+    buttons.forEach(btn => btn.addEventListener('click', openModal))
+    closeBtn.addEventListener('click', closeModal)
 }
 
-export default modal
+export default modal;

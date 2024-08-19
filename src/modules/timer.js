@@ -14,18 +14,18 @@ const timer = (deadline) => {
     }
 
     const getTimeRemaining = () => {
-        let dateStop = new Date(deadline).getTime()
-        let dateNow = new Date().getTime()
-        let timeRemaining = (dateStop - dateNow) / 1000
-        let hours = Math.floor(timeRemaining / 60 / 60)
-        let minutes = Math.floor((timeRemaining / 60) % 60)
-        let seconds = Math.floor(timeRemaining % 60)
+        const dateStop = new Date(deadline).getTime()
+        const dateNow = new Date().getTime()
+        const timeRemaining = (dateStop - dateNow) / 1000
+        const hours = Math.floor(timeRemaining / 60 / 60)
+        const minutes = Math.floor((timeRemaining / 60) % 60)
+        const seconds = Math.floor(timeRemaining % 60)
 
         return {timeRemaining, hours, minutes, seconds }
     }
 
     const updateClock = () => {
-        let getTime = getTimeRemaining()
+        const getTime = getTimeRemaining()
 
         timeHours.textContent = addTimeZero(getTime.hours)
         timeMinutes.textContent = addTimeZero(getTime.minutes)
