@@ -1,38 +1,40 @@
 const request = () => {
-    const headerFormName = document.querySelectorAll('.form-name') // type=text
-    const headerFormEmail = document.querySelectorAll('.form-email') //type=email
-    const headerFormPhone = document.querySelectorAll('.form-phone') //type=tel
+    const userNameInputs = document.querySelectorAll('.form-name') // type=text
+    const userEmailInputs = document.querySelectorAll('.form-email') //type=email
+    const userPhoneInputs = document.querySelectorAll('.form-phone') //type=tel
 
-    const footerFormName = document.getElementById('form2-name')
-    const footerFormMessage = document.getElementById('form2-message') //placeholder="Ваше сообщение"
+    const footerNameInput = document.getElementById('form2-name')
+    const footerMessageInput = document.getElementById('form2-message') //placeholder="Ваше сообщение"
 
+    const nameHandler = e => {
+        e.target.value = e.target.value.replace(/[^а-яА-Я\s\-]/, "");
+    };
 
-    headerFormName.forEach(elem => {
+    userNameInputs.forEach(elem => {
         elem.addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/[^а-яА-Я\s\-]/, '')
+            nameHandler(e)
         })
     })
 
-    headerFormEmail.forEach(elem => {
+    userEmailInputs.forEach(elem => {
         elem.addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/[^a-zA-Z0-9@_.!~*']/g, '')
         })
     })
 
-    headerFormPhone.forEach(elem => {
+    userPhoneInputs.forEach(elem => {
         elem.addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/[^0-9()\-]/g, '')
         })
     })
 
-    footerFormName.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/[^а-яА-Я\s\-]/, '')
+    footerNameInput.addEventListener('input', (e) => {
+        nameHandler(e)
     })
 
-    footerFormMessage.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/[^а-яА-Я\s\-]/, '')
+    footerMessageInput.addEventListener('input', (e) => {
+        nameHandler(e)
     })
-
 
 }
 

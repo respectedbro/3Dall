@@ -47,6 +47,9 @@ const modal = () => {
     }
 
     const closeModal = () => {
+        if (screenWidth < 768) {
+            modal.style.display = 'none'
+        }
         animateOutModal()
     }
 
