@@ -1,7 +1,6 @@
 const modal = () => {
     const modal = document.querySelector('.popup')
     const buttons = document.querySelectorAll('.popup-btn')
-    const closeBtn = modal.querySelector('.popup-close')
     const screenWidth = document.documentElement.offsetWidth
 
     modal.style.opacity = 0
@@ -54,7 +53,12 @@ const modal = () => {
     }
 
     buttons.forEach(btn => btn.addEventListener('click', openModal))
-    closeBtn.addEventListener('click', closeModal)
+
+    modal.addEventListener('click', (e) => {
+        if(!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+            closeModal()
+        }
+    })
 }
 
 export default modal;
