@@ -4,22 +4,18 @@ const menu = () => {
     const closeBtn = menu.querySelector('.close-btn')
     const menuItems = menu.querySelectorAll('ul>li>a')
 
-    const handlerMenu = () => {
-        menu.classList.toggle('active-menu')
+    const handlerMenu = (e) => {
+        if (e.target.closest('.menu') || e.target.closest('.close-btn') || e.target.closest('ul>li>a')) {
+            menu.classList.toggle('active-menu')
+        }
     }
 
-    menu.addEventListener('click', (e) => {
-        if (e.target === menuBtn || e.target === closeBtn) {
-            menu.classList.toggle('active-menu');
-        } else if (e.target.closest('ul>li>a')) {
-            menu.classList.remove('active-menu');
-        }
-    })
+    document.addEventListener('click', handlerMenu)
 
     // menuBtn.addEventListener('click', handlerMenu)
     // closeBtn.addEventListener('click', handlerMenu)
 
-    menuItems.forEach(menuItem => menuItem.addEventListener('click', handlerMenu))
+    // menuItems.forEach(menuItem => menuItem.addEventListener('click', handlerMenu))
 
 }
 
