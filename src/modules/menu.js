@@ -11,9 +11,6 @@ const menu = () => {
             menu.classList.toggle('active-menu');
         }
     }
-    document.addEventListener('click', (e) => {
-        console.log(e.target)
-    })
 
     document.addEventListener('click', handlerMenu)
 
