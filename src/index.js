@@ -6,7 +6,7 @@ import calculator from './modules/calculator'
 import tabs from './modules/tabs'
 import slider from './modules/slider'
 
-timer('21 august 2024')
+timer('25 august 2024')
 menu()
 modal()
 request()
