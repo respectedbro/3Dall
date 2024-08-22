@@ -1,3 +1,5 @@
+import {animate} from "./helpers";
+
 const modal = () => {
     const modal = document.querySelector('.popup')
     const buttons = document.querySelectorAll('.popup-btn')
@@ -55,7 +57,7 @@ const modal = () => {
     buttons.forEach(btn => btn.addEventListener('click', openModal))
 
     modal.addEventListener('click', (e) => {
-        if(!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+        if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
             closeModal()
         }
     })
