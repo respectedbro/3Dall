@@ -12,7 +12,7 @@ const slider = () => {
     }
 
     const nextSlide = (elems, index, strClass) => {
-       elems[index].classList.add(strClass)
+        elems[index].classList.add(strClass)
     }
 
     const autoSlide = () => {
@@ -55,15 +55,15 @@ const slider = () => {
                     currentSlide = index
                 }
             })
-
-            if (currentSlide >= slides.length) {
-                currentSlide = 0
-            }
-
-            if (currentSlide < 0) {
-                currentSlide = slides.length - 1
-            }
         }
+        if (currentSlide >= slides.length) {
+            currentSlide = 0
+        }
+
+        if (currentSlide < 0) {
+            currentSlide = slides.length - 1
+        }
+
         nextSlide(slides, currentSlide, 'portfolio-item-active')
         nextSlide(dots, currentSlide, 'dot-active')
     })
