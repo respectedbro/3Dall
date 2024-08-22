@@ -7,19 +7,37 @@ const modal = () => {
 
     modal.style.opacity = 0
     modal.style.visibility = 'hidden'
+    modal.style.display = 'none';
 
     const animateOnModal = () => {
-        let opacity = 0
-        const animateOn = () => {
-            opacity += 0.04
-            modal.style.opacity = opacity;
-            if (opacity < 1) {
-                requestAnimationFrame(animateOn)
+        modal.style.display = 'block';
+        animate({
+            duration: 200,
+            timing(timeFraction) {
+                return timeFraction;
+            },
+            draw(progress) {
+                modal.style.opacity = progress
+                modal.style.visibility = 'visible'
             }
-        }
-        modal.style.display = 'block'
-        modal.style.visibility = 'visible'
-        animateOn()
+        });
+    }
+
+    const animateOutModal = () => {
+        animate({
+            duration: 200,
+            timing(timeFraction) {
+                return timeFraction;
+            },
+            draw(progress) {
+                modal.style.opacity = 1 - progress
+                if(progress === 1) {
+                    modal.style.visibility = 'hidden'
+                    modal.style.display = 'none'
+                }
+
+            }
+        });
     }
 
     const openModal = () => {
@@ -30,21 +48,6 @@ const modal = () => {
         } else {
             animateOnModal()
         }
-    }
-
-    const animateOutModal = () => {
-        let opacity = 1
-        const animateOut = () => {
-            opacity -= 0.04
-            modal.style.opacity = opacity;
-            if (opacity > 0) {
-                requestAnimationFrame(animateOut)
-            } else {
-                modal.style.visibility = 'hidden'
-                modal.style.display = 'none'
-            }
-        }
-        animateOut()
     }
 
     const closeModal = () => {
@@ -63,4 +66,4 @@ const modal = () => {
     })
 }
 
-export default modal;
+export default modal
