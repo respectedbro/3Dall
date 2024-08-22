@@ -7,15 +7,15 @@ const menu = () => {
     const handlerMenu = (e) => {
         if (e.target.closest('.menu') || e.target.closest('.close-btn') || e.target.closest('ul>li>a')) {
             menu.classList.toggle('active-menu')
+        } else if (!e.target.closest('menu') && menu.classList.contains('active-menu')) {
+            menu.classList.toggle('active-menu');
         }
     }
+    document.addEventListener('click', (e) => {
+        console.log(e.target)
+    })
 
     document.addEventListener('click', handlerMenu)
-
-    // menuBtn.addEventListener('click', handlerMenu)
-    // closeBtn.addEventListener('click', handlerMenu)
-
-    // menuItems.forEach(menuItem => menuItem.addEventListener('click', handlerMenu))
 
 }
 
