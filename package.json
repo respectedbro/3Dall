@@ -7,6 +7,9 @@
     "watch": "webpack --watch --mode=development",
     "start": "webpack serve --mode=development --open"
   },
+  "dependencies": {
+    "swiper": "^11.1.10"
+  },
   "author": "Dm Nk",
   "license": "ISC",
   "devDependencies": {
