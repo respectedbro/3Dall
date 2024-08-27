@@ -7,6 +7,8 @@ import tabs from './modules/tabs'
 import slider from './modules/slider'
 import sliderCarousel from './modules/sliderCarousel'
 import calc from './modules/calc'
+import sendForm from "./modules/sendForm";
+
 
 timer('25 august 2024')
 menu()
@@ -17,3 +19,12 @@ tabs()
 slider()
 sliderCarousel()
 calc(100)
+sendForm({
+    formId: 'form1',
+    someElem: [
+        {
+            type: 'block',
+            id: 'total'
+        }
+    ]
+})
