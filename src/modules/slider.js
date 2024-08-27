@@ -11,7 +11,7 @@ const slider = () => {
     slides.forEach((elem, index) => {
         const dot = document.createElement('li')
         dot.classList.add('dot')
-        if (dot[index] === 0) {
+        if (index === 0) {
             dot.classList.add('dot-active')
         }
         dotsList.append(dot)

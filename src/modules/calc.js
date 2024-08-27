@@ -36,7 +36,7 @@ const calc = (price = 100) => {
         const totalValueNum = +total.textContent
 
         animate({
-            duration: 700,
+            duration: 500,
             timing(timeFraction) {
                 return timeFraction;
             },
