@@ -6,7 +6,7 @@ const timer = (deadline) => {
     let idInterval
 
     const addTimeZero = (time) => {
-        if(time < 10) {
+        if (time < 10) {
             return '0' + time
         } else {
             return time
@@ -21,7 +21,7 @@ const timer = (deadline) => {
         const minutes = Math.floor((timeRemaining / 60) % 60)
         const seconds = Math.floor(timeRemaining % 60)
 
-        return {timeRemaining, hours, minutes, seconds }
+        return {timeRemaining, hours, minutes, seconds}
     }
 
     const updateClock = () => {
@@ -31,13 +31,13 @@ const timer = (deadline) => {
         timeMinutes.textContent = addTimeZero(getTime.minutes)
         timeSeconds.textContent = addTimeZero(getTime.seconds)
 
-        if(getTime.timeRemaining < 0) {
+        if (getTime.timeRemaining < 0) {
             timeHours.textContent = '00'
             timeMinutes.textContent = '00'
             timeSeconds.textContent = '00'
             clearInterval(idInterval)
         }
-        
+
     }
 
     updateClock()

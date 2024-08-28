@@ -8,23 +8,7 @@ const sendForm = ({formId, someElem = []}) => {
 
     const validate = (list) => {
         let success = true
-        list.forEach(input => {
-            if (input.name === 'user_phone') {
-                if (!/^[0-9()+-]+$/.test(input.value)) {
-                    success = false
-                }
-            }
-            if (input.name === 'user_name') {
-                if (!/^[а-яА-Я\s]+$/) {
-                    success = false
-                }
-            }
-            if (input.name === 'user_message') {
-                if(!/^[а-яА-Я0-9\s.,:;-]+$/) {
-                    success = false
-                }
-            }
-        })
+
         return success
     }
 
@@ -61,7 +45,10 @@ const sendForm = ({formId, someElem = []}) => {
         if (validate(formElements)) {
             sendData(formBody).then(data => {
                 statusBlock.textContent = successText
-
+                statusBlock.style.color = '#fff'
+                setTimeout(() => {
+                    statusBlock.style.display = 'none';
+                },3000)
                 formElements.forEach(input => {
                     input.value = ''
                 })
