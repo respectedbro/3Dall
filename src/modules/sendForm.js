@@ -27,6 +27,8 @@ const sendForm = ({formId, someElem = []}) => {
         const formBody = {}
 
         statusBlock.textContent = loadText
+        statusBlock.style.color = '#fff'
+        statusBlock.style.display = 'block'
         form.append(statusBlock)
 
         formData.forEach((val, key) => {
@@ -44,11 +46,13 @@ const sendForm = ({formId, someElem = []}) => {
 
         if (validate(formElements)) {
             sendData(formBody).then(data => {
+
                 statusBlock.textContent = successText
-                statusBlock.style.color = '#fff'
+
                 setTimeout(() => {
                     statusBlock.style.display = 'none';
-                },3000)
+                    statusBlock.textContent = ''
+                }, 3000)
                 formElements.forEach(input => {
                     input.value = ''
                 })
